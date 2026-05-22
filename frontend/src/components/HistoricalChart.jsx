@@ -16,7 +16,7 @@ export default React.memo(function HistoricalChart({ data = [] }) {
         <div className="flex items-center gap-2">
           <Activity size={14} strokeWidth={1.5} style={{ color: "#10b981" }} />
           <h2 className="text-xs font-semibold tracking-wider uppercase text-[var(--color-text-primary)]">
-            Health Score History
+            Structural Integrity Score History
           </h2>
         </div>
         <button 

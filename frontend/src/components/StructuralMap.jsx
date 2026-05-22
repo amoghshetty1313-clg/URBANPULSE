@@ -9,13 +9,13 @@ const NODES = [
 ];
 
 const STATUS_HEX = {
-  healthy: "#10b981",
+  optimal: "#10b981",
   warning: "#f59e0b",
   critical: "#e11d48",
 };
 
 function getStatus(score) {
-  if (score >= 80) return "healthy";
+  if (score >= 80) return "optimal";
   if (score >= 40) return "warning";
   return "critical";
 }

@@ -62,8 +62,8 @@ export default React.memo(function StatusBanner({ systemStatus = "clear" }) {
           <span className="text-xs font-semibold tracking-widest uppercase text-[var(--color-text-secondary)]">
             UrbanPulse
           </span>
-          <span className="text-xs text-[var(--color-text-muted)] ml-2 hidden sm:inline">
-            Structural Health Monitor
+          <span className="text-[10px] font-semibold tracking-widest uppercase text-[var(--color-text-muted)] ml-2 hidden sm:inline border-l border-[var(--color-border-subtle)] pl-2">
+            Structural Integrity Monitor
           </span>
         </div>
       </div>

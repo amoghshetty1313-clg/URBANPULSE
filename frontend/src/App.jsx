@@ -17,8 +17,8 @@ const INITIAL_NODES = {
 };
 
 const SEED_EVENTS = [
-  { id: "s1", time: new Date().toLocaleTimeString("en-US", { hour12: false }), node: "System", level: "healthy", msg: "Telemetry stream connected — listening on ws://localhost:8080" },
-  { id: "s2", time: new Date().toLocaleTimeString("en-US", { hour12: false }), node: "System", level: "healthy", msg: "Sensors calibrated and baseline established" },
+  { id: "s1", time: new Date().toLocaleTimeString("en-US", { hour12: false }), node: "System", level: "optimal", msg: "Telemetry stream connected — listening on ws://localhost:8080" },
+  { id: "s2", time: new Date().toLocaleTimeString("en-US", { hour12: false }), node: "System", level: "optimal", msg: "Sensors calibrated and baseline established" },
 ];
 
 function now() {
@@ -39,14 +39,14 @@ export default function App() {
   const nodes = useStore((state) => state.nodes);
   const events = useStore((state) => state.events);
   const activeNode = useStore((state) => state.activeNode);
-  const healthHistory = useStore((state) => state.healthHistory);
+  const integrityHistory = useStore((state) => state.integrityHistory);
   const wsConnected = useStore((state) => state.wsConnected);
   
   const updateNode = useStore((state) => state.updateNode);
   const addEvent = useStore((state) => state.addEvent);
   const setWsConnected = useStore((state) => state.setWsConnected);
   const setActiveNode = useStore((state) => state.setActiveNode);
-  const setHealthHistory = useStore((state) => state.setHealthHistory);
+  const setIntegrityHistory = useStore((state) => state.setIntegrityHistory);
   const reset = useStore((state) => state.reset);
 
   const requestRef = useRef();
@@ -134,8 +134,8 @@ export default function App() {
           "Node B": currentNodes["Node B"].score,
           "Node C": currentNodes["Node C"].score,
         };
-        const currentHistory = useStore.getState().healthHistory;
-        setHealthHistory([...currentHistory.slice(-29), newData]);
+        const currentHistory = useStore.getState().integrityHistory;
+        setIntegrityHistory([...currentHistory.slice(-29), newData]);
         lastTime = nowTime;
       }
       requestRef.current = requestAnimationFrame(updateHistory);
@@ -189,7 +189,7 @@ export default function App() {
             />
           </div>
           <div className="col-span-2 min-h-0">
-            <HistoricalChart data={healthHistory} />
+            <HistoricalChart data={integrityHistory} />
           </div>
         </section>
 

@@ -2,9 +2,9 @@ import React from "react";
 import { Cpu, Wifi } from "lucide-react";
 
 const STATUS_CONFIG = {
-  healthy: {
+  optimal: {
     hex: "#10b981",
-    label: "HEALTHY",
+    label: "OPTIMAL",
   },
   warning: {
     hex: "#f59e0b",
@@ -17,7 +17,7 @@ const STATUS_CONFIG = {
 };
 
 function getStatus(score) {
-  if (score >= 80) return "healthy";
+  if (score >= 80) return "optimal";
   if (score >= 40) return "warning";
   return "critical";
 }
@@ -79,17 +79,20 @@ export default React.memo(function NodeCard({
             className="transition-all duration-300 ease-out"
           />
         </svg>
-        <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <span
             className="text-2xl font-bold font-mono transition-colors duration-300"
             style={{ color }}
           >
             {score}
           </span>
-          <span className="text-[9px] uppercase tracking-widest text-[var(--color-text-muted)]">
-            Health
-          </span>
         </div>
+      </div>
+
+      <div className="flex flex-col items-center -mt-1">
+        <span className="text-[9px] uppercase tracking-[0.2em] text-[var(--color-text-muted)] font-semibold">
+          Structural Integrity
+        </span>
       </div>
 
       <div className="w-full grid grid-cols-3 gap-1">

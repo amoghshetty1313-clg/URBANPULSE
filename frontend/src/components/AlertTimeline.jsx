@@ -5,7 +5,7 @@ import { useStore } from "../store";
 const CFG = {
   critical: { icon: XCircle, color: "#e11d48", bg: "rgba(225,29,72,0.1)", border: "rgba(225,29,72,0.3)" },
   warning: { icon: AlertTriangle, color: "#f59e0b", bg: "rgba(245,158,11,0.1)", border: "rgba(245,158,11,0.25)" },
-  healthy: { icon: CheckCircle, color: "#10b981", bg: "rgba(16,185,129,0.08)", border: "rgba(16,185,129,0.2)" },
+  optimal: { icon: CheckCircle, color: "#10b981", bg: "rgba(16,185,129,0.08)", border: "rgba(16,185,129,0.2)" },
 };
 
 export default React.memo(function AlertTimeline({ events = [] }) {
@@ -101,7 +101,7 @@ export default React.memo(function AlertTimeline({ events = [] }) {
         style={{ minHeight: 0 }}
       >
         {events.map((e, i) => {
-          const c = CFG[e.level] || CFG.healthy;
+          const c = CFG[e.level] || CFG.optimal;
           const Icon = c.icon;
           return (
             <div

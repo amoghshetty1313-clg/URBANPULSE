@@ -9,12 +9,12 @@ const INITIAL_NODES = {
 export const useStore = create((set, get) => ({
   nodes: INITIAL_NODES,
   events: [
-    { id: "s1", time: new Date().toLocaleTimeString("en-US", { hour12: false }), node: "System", level: "healthy", msg: "Telemetry stream connected — listening on ws://localhost:8080" },
-    { id: "s2", time: new Date().toLocaleTimeString("en-US", { hour12: false }), node: "System", level: "healthy", msg: "Sensors calibrated and baseline established" },
+    { id: "s1", time: new Date().toLocaleTimeString("en-US", { hour12: false }), node: "System", level: "optimal", msg: "Telemetry stream connected — listening on ws://localhost:8080" },
+    { id: "s2", time: new Date().toLocaleTimeString("en-US", { hour12: false }), node: "System", level: "optimal", msg: "Sensors calibrated and baseline established" },
   ],
   activeNode: 0,
   wsConnected: false,
-  healthHistory: [],
+  integrityHistory: [],
   expandedCard: null,
 
   setWsConnected: (connected) => set({ wsConnected: connected }),
@@ -39,14 +39,14 @@ export const useStore = create((set, get) => ({
 
   addEvent: (event) => set((state) => ({ events: [event, ...state.events] })),
 
-  setHealthHistory: (history) => set({ healthHistory: history }),
+  setIntegrityHistory: (history) => set({ integrityHistory: history }),
 
   reset: () => set({
     nodes: INITIAL_NODES,
     activeNode: 0,
-    healthHistory: [],
+    integrityHistory: [],
     events: [
-      { id: "reset-" + Date.now(), time: new Date().toLocaleTimeString("en-US", { hour12: false }), node: "System", level: "healthy", msg: "System Initialized — All clear" },
+      { id: "reset-" + Date.now(), time: new Date().toLocaleTimeString("en-US", { hour12: false }), node: "System", level: "optimal", msg: "System Initialized — All clear" },
     ],
   }),
 }));
